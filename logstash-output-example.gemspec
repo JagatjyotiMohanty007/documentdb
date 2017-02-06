@@ -1,16 +1,16 @@
 Gem::Specification.new do |s|
-  s.name = 'logstash-output-example'
-  s.version         = "2.0.0"
+  s.name = 'logstash-output-documentdb'
+  s.version    =  File.read("VERSION").strip
+  s.authors = ["Jagatjyoti Mohanty"]
+  s.email = "yoichi.kawasaki@outlook.com"
+  s.summary = %q{logstash output plugin to store events into Azure DocumentDB}
+  s.description = s.summary
+  s.homepage = "http://github.com/yokawasa/logstash-output-documentdb"
   s.licenses = ["Apache License (2.0)"]
-  s.summary = "This example output does nothing."
-  s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"
-  s.authors = ["Elastic"]
-  s.email = "info@elastic.co"
-  s.homepage = "http://www.elastic.co/guide/en/logstash/current/index.html"
   s.require_paths = ["lib"]
 
   # Files
-  s.files = Dir['lib/**/*','spec/**/*','vendor/**/*','*.gemspec','*.md','CONTRIBUTORS','Gemfile','LICENSE','NOTICE.TXT']
+  s.files = Dir['lib/**/*','spec/**/*','vendor/**/*','*.gemspec','*.md','CONTRIBUTORS','Gemfile','LICENSE','NOTICE.TXT', 'VERSION']
    # Tests
   s.test_files = s.files.grep(%r{^(test|spec|features)/})
 
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.metadata = { "logstash_plugin" => "true", "logstash_group" => "output" }
 
   # Gem dependencies
+  s.add_runtime_dependency "rest-client"
   s.add_runtime_dependency "logstash-core", ">= 2.0.0", "< 3.0.0"
   s.add_runtime_dependency "logstash-codec-plain"
   s.add_development_dependency "logstash-devutils"
